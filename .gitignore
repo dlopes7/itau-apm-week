@@ -1,0 +1,4 @@
+load/shopizer-load-jmeter/*
+java-agent/*
+.idea/*
+load/shopizer-load-go/.idea/*

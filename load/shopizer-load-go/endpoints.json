@@ -1,0 +1,36 @@
+
+[
+  { "url": "api/v1/products",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/products/1",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/products/group/FEATURED_ITEM",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/products/1/reviews",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/category/3",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/products/8",
+    "body": "",
+    "method": "GET"
+  },
+  { "url": "api/v1/manufacturers/1",
+    "body": "",
+    "method": "GET"
+  },
+  {
+    "url": "api/v1/customers/2/cart",
+    "body": "",
+    "method": "GET"
+  }
+]
