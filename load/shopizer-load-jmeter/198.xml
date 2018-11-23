@@ -1,0 +1,3043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Main Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8082</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8083</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+&quot;emailAddress&quot;:&quot;${email}&quot;,&#xd;
+&quot;gender&quot;:&quot;${gender}&quot;,&#xd;
+&quot;language&quot;:&quot;en&quot;,&#xd;
+&quot;userName&quot;:&quot;${email}&quot;,&#xd;
+&quot;clearPassword&quot;:&quot;${clearpassword}&quot;,&#xd;
+&quot;billing&quot;:{&#xd;
+  &quot;address&quot;:&quot;${address}&quot;,&#xd;
+  &quot;city&quot;:&quot;${city}&quot;,&#xd;
+  &quot;postalCode&quot;:&quot;${zip}&quot;,&#xd;
+  &quot;country&quot;:&quot;BR&quot;,&#xd;
+  &quot;zone&quot;:&quot;ON&quot;,&#xd;
+  &quot;firstName&quot;:&quot;${first_name}&quot;,&#xd;
+  &quot;lastName&quot;:&quot;${last_name}&quot;&#xd;
+  }&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8084</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/auth/register</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">/opt/appdynamics/MOCK_DATA.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">clearpassword ,first_name,last_name,email,gender,ip_address,address,city,zip,Domain,Email</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">/Users/igor.simoes/Downloads/apache-jmeter-5.0/itau_training.jtl</stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">3</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">14400</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8082</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8083</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;query&quot;:&quot;tag&quot;,&#xd;
+  &quot;start&quot;:0,&#xd;
+  &quot;count&quot;:10&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8084</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/api/v1/search</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">cache-control</stringProp>
+                <stringProp name="Header.value">no-cache</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1800</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8081</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8082</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8083</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Home" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8084</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/shop</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">2</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <InterleaveControl guiclass="InterleaveControlGui" testclass="InterleaveControl" testname="Interleave Controller" enabled="true">
+          <intProp name="InterleaveControl.style">1</intProp>
+          <boolProp name="InterleaveControl.accrossThreads">false</boolProp>
+        </InterleaveControl>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="false">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8080</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8081</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8082</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8083</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HandBags" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/category/handbags.html/ref=c:1</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Vintage Courier Bag" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/product/vintage-courier-bag.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="addShoppingCartItem" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;quantity&quot;:1,&quot;productId&quot;:10}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/addShoppingCartItem?quantity=1&amp;productId=10</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">code</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">No_Default</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;app-davidlopeseumlabdr-dipql6oy.srv.ravcloud.com&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getDomain())
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="shoppingCart.html" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/cart/shoppingCart.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;####################### Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+String jsonCart =  vars.get(&quot;code&quot;);
+
+Cookie c = new Cookie(&quot;cart&quot;, &quot;DEFAULT_&quot;+jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+Cookie c2 = new Cookie(&quot;mycart&quot;, jsonCart, &quot;&quot;, &quot;/&quot;, false, 1557578515)
+
+cm.add(c);
+
+log.info(&quot;******************** SETTING COOKIE: &quot; + jsonCart)
+log.info(&quot;******************** Cookie value: &quot; + cm.get(1).getValue()+&quot; Path:&quot;+cm.get(1).getPath())
+log.info(&quot;******************** JSESSION value: &quot; + cm.get(0).getValue()+&quot; Path:&quot;+cm.get(0).getPath())
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="checkout" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/checkout.html</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import org.apache.jmeter.protocol.http.control.*
+
+//Get cookie manager
+CookieManager cm = sampler.getCookieManager();
+
+
+log.info(&quot;________________________ Cookie value: &quot; + cm.get(1).getValue())</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="commitOrder" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;useDistanceWindow&quot;&#xd;
+&#xd;
+false&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.firstName&quot;&#xd;
+&#xd;
+${first_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.lastName&quot;&#xd;
+&#xd;
+${last_name}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.address&quot;&#xd;
+&#xd;
+${address}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.city&quot;&#xd;
+&#xd;
+${city}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.country&quot;&#xd;
+&#xd;
+US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.zone&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.postalCode&quot;&#xd;
+&#xd;
+${zip}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.emailAddress&quot;&#xd;
+&#xd;
+${email}&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.billing.phone&quot;&#xd;
+&#xd;
+1111111111&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.clearPassword&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_shipToDeliveryAddress&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.firstName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.lastName&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.company&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.address&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.city&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.country&quot;&#xd;
+&#xd;
+CA&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.zone&quot;&#xd;
+&#xd;
+QC&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.stateProvince&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customer.delivery.postalCode&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;comments&quot;&#xd;
+&#xd;
+&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;shippingModule&quot;&#xd;
+&#xd;
+weightBased&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;selectedShippingOption.optionId&quot;&#xd;
+&#xd;
+CUSTOM_WEIGHT_US&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentMethodType&quot;&#xd;
+&#xd;
+MONEYORDER&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;paymentModule&quot;&#xd;
+&#xd;
+moneyorder&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;customerAgreed&quot;&#xd;
+&#xd;
+true&#xd;
+-----------------------------2644078620086590201089218300&#xd;
+Content-Disposition: form-data; name=&quot;_customerAgreed&quot;&#xd;
+&#xd;
+on&#xd;
+-----------------------------2644078620086590201089218300--&#xd;
+</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">localhost</stringProp>
+            <stringProp name="HTTPSampler.port">8084</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/shop/order/commitOrder.html</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">multipart/form-data; boundary=---------------------------2644078620086590201089218300</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="filename">/opt/appdynamics/MOCK_DATA_BUY.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
